@@ -28,18 +28,18 @@ NewPing sonar(ULTRASONIC_TRIGGER, ULTRASONIC_ECHO, MAX_DISTANCE); //initialize N
 
 void setup() {
   //Serial Debug Setup
-  Serial.begin(9600);            // set data transmission rate to communicate with computer
+  Serial.begin(9600);
   
   //Ultrasonic Setup
   pinMode(ULTRASONIC_ECHO, INPUT);  
   pinMode(ULTRASONIC_TRIGGER, OUTPUT);
-  pinMode(ULTRASONIC_GND, OUTPUT);    // tell pin 10 it is going to be an output
-  pinMode(ULTRASONIC_VCC, OUTPUT);       // tell pin 13 it is going to be an output
-  digitalWrite(ULTRASONIC_GND,LOW);   // tell pin 10 to output LOW (OV, or ground)
-  digitalWrite(ULTRASONIC_VCC, HIGH) ;   // tell pin 13 to output HIGH (+5V)
+  pinMode(ULTRASONIC_GND, OUTPUT);
+  pinMode(ULTRASONIC_VCC, OUTPUT);
+  digitalWrite(ULTRASONIC_GND,LOW);
+  digitalWrite(ULTRASONIC_VCC, HIGH);
 
   //Servo Motor Setup
-  myservo.attach(SERVO);  // attaches the servo on pin 9 to the servo object}
+  myservo.attach(SERVO);
 
   //Switch Setup
   pinMode(SWITCH, INPUT);
