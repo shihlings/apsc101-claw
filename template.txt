@@ -1,6 +1,6 @@
 /*
   Title:        APSC 101 U-1 Module 5 Arduino Program Template
-  Date:         Jan 5th, 2023
+  Date:         Jan 27th, 2023
   Description:  This template includes all necessary headers for the arduino headers, as well as the setup.
                 To configure your arduino, see the schematic.pdf or device_connection.png located at the root of this repository.
                 Only modify the loop() part of this program. Add new functions as necessary. DO NOT MODIFY THE TEMPLATE.
@@ -9,8 +9,6 @@
 
 #include <NewPing.h>      //NewPing library for ultrasonic sensor
 #include <Servo.h>        //servo library for servo motor
-
-Servo myservo;            //create servo object to control servo motor
 
 //Ultrasonic definitions
 #define ULTRASONIC_GND      10
@@ -22,6 +20,7 @@ NewPing sonar(ULTRASONIC_TRIGGER, ULTRASONIC_ECHO, MAX_DISTANCE); //initialize N
 
 //Servo Pin definitions
 #define SERVO 9
+Servo myservo;            //create servo object to control servo motor
 
 //Switch Pin definitions
 #define SWITCH 8
