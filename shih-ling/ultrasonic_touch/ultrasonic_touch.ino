@@ -15,7 +15,6 @@
 
 //Program Parameters
   #define DEBUG                         //commenting this out will disable all debugging features, program efficiency will improve
-  #define DELAY                   500   //the amount of time before performing next action (in milliseconds)
   #define DISTANCE_THRESHOLD      30    //the distance detected to trigger a grab/release (in centimeters)
   #define INITIAL_ANGLE           105     //the initial angle the servo motor is at. The twist angle will be adjust accordingly to this number (in degrees)
   #define TWIST_ANGLE             -90    //the amount to twist to grasp the object (in degrees)
