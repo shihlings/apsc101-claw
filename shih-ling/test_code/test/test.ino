@@ -1,10 +1,12 @@
 /*
-  Title:        APSC 101 U-1 Module 5 Arduino Program with Ultrasonic Sensor
+  Title:        APSC 101 U-1 Module 5 Arduino Program with Ultrasonic Sensor and Touch Sensor
   Author:       Shih-Ling Shen
-  Date:         Jan 27th, 2023
-  Description:  This program relies on the ultrasonic sensor to determine when to grab and release the object.
-  Operation:    The claw closes if it reaches below the set distance threshold and the previous state of the claw was open
-                The claw opens if it reaches below the set distance threshold and the previous state of the claw was closed
+  Date:         Jan 28th, 2023
+  Description:  This program relies on the ultrasonic sensor and the touch sensor to determine when to grab and release the object.
+  Operation:    The claw reads the ultrasonic sensor values in the meantime. If the claw reaches below set distance threshold,
+                the claw will close/open after a set delay (if open, claw closes; if closed, claw opens).
+                The claw closes/opens immediately if the touch sensor is triggered when the ultrasonic reading
+                is below the set distnace threshold (if open, claw closes; if closed, claw opens).
  */
 
 //Required Libraries
@@ -23,6 +25,8 @@
 //Define BOOL
   #define OPEN   0
   #define CLOSED 1
+  #define TRUE   1
+  #define FALSE  0
 
 //Ultrasonic definitions
   #define ULTRASONIC_GND      10
@@ -36,16 +40,18 @@
   #define SERVO 9
   Servo myservo;            //create servo object to control servo motor
 
+//Switch Pin definitions
+  #define SWITCH 8
+
 //Global Variables
-  int last_run = 0;        //time control (recording last run time in milliseconds)
   int claw_state = OPEN;   //recording claw grab state
 
 //Function Prototypes
-  void Grab ();
-  int GetUltrasonic ();
-  void ClawExec ();
+  void ClawDelay ();
   void WaitUntilRise ();
   void WaitUntilLower ();
+  int GetTouch ();
+  int GetUltrasonic ();
   void OpenClaw ();
   void CloseClaw ();
 
@@ -56,7 +62,7 @@ void setup() {
   #endif
   
   //Ultrasonic Setup
-  pinMode(ULTRASONIC_ECHO, INPUT);
+  pinMode(ULTRASONIC_ECHO, INPUT);  
   pinMode(ULTRASONIC_TRIGGER, OUTPUT);
   pinMode(ULTRASONIC_GND, OUTPUT);
   pinMode(ULTRASONIC_VCC, OUTPUT);
@@ -65,15 +71,12 @@ void setup() {
 
   //Servo Motor Setup
   myservo.attach(SERVO);
-  OpenClaw();
+
+  //Switch Setup
+  pinMode(SWITCH, INPUT);
 }
 
 void loop() {
-  ClawExec();
-}
-
-//determines if the claw should be opened or closed
-void ClawExec () {
   //wait until the claw rises then lowers
   WaitUntilRise();
   WaitUntilLower();
@@ -96,7 +99,7 @@ void ClawDelay () {
   long time = millis();
   
   //delay the claw execution by CLAW_DELAY milliseconds
-  while (millis() <= time + CLAW_DELAY) {
+  while (millis() <= time + CLAW_DELAY && (GetTouch() == FALSE)) {
     delay(PERFORMANCE_DELAY);
   }
 }
@@ -129,6 +132,12 @@ void WaitUntilLower () {
       last_check = millis();        //stores the time of the last check
     }
   }
+}
+
+//detects if the touch sensor is triggered
+//TRUE if triggered, FALSE if not triggered
+int GetTouch () {
+  return (digitalRead(SWITCH) == HIGH);
 }
 
 //retrieves the distance read in the ultrasonic sensor
