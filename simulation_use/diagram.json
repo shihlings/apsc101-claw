@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": -7.29, "left": 41.79, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -239.17,
+      "left": 95.99,
+      "attrs": { "distance": "12" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 262.61,
+      "left": 121.95,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 289.78,
+      "left": 206.18,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": 47.9,
+      "left": 413.9,
+      "attrs": { "horn": "double" }
+    }
+  ],
+  "connections": [
+    [ "ultrasonic1:VCC", "uno:13", "red", [ "v0" ] ],
+    [ "ultrasonic1:TRIG", "uno:12", "green", [ "v0" ] ],
+    [ "ultrasonic1:ECHO", "uno:11", "green", [ "v0" ] ],
+    [ "ultrasonic1:GND", "uno:10", "black", [ "h-2.13", "v194.71" ] ],
+    [ "servo1:PWM", "uno:9", "green", [ "h-41.26", "v-115.19" ] ],
+    [ "servo1:V+", "uno:5V", "green", [ "h-57.12", "v0.28", "h-154.99" ] ],
+    [ "servo1:GND", "uno:GND.3", "black", [ "h0" ] ],
+    [ "uno:8", "btn1:2.l", "green", [ "v-57.92", "h-213.72", "v351.94", "h19.64" ] ],
+    [ "btn1:2.r", "r1:1", "green", [ "h0" ] ],
+    [ "r1:2", "uno:GND.2", "green", [ "v-66.91", "h-49.43", "v-8.31" ] ],
+    [ "uno:3.3V", "btn1:1.r", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
