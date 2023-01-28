@@ -12,7 +12,7 @@
   #include <Servo.h>        //servo library for servo motor
 
 //Program Parameters
-  #define DEBUG                         //commenting this out will disable all debugging features, program efficiency will improve
+//  #define DEBUG                         //commenting this out will disable all debugging features, program efficiency will improve
   #define DELAY                   500   //the amount of time before performing next action (in milliseconds)
   #define DISTANCE_THRESHOLD      30    //the distance detected to trigger a grab/release (in centimeters)
   #define INITIAL_ANGLE           105     //the initial angle the servo motor is at. The twist angle will be adjust accordingly to this number (in degrees)
@@ -37,15 +37,13 @@
   Servo myservo;            //create servo object to control servo motor
 
 //Global Variables
-  int last_run = 0;        //time control (recording last run time in milliseconds)
   int claw_state = OPEN;   //recording claw grab state
 
 //Function Prototypes
-  void Grab ();
-  int GetUltrasonic ();
-  void ClawExec ();
+  void ClawDelay ();
   void WaitUntilRise ();
   void WaitUntilLower ();
+  int GetUltrasonic ();
   void OpenClaw ();
   void CloseClaw ();
 
