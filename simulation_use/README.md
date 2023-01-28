@@ -9,6 +9,6 @@
 7. Click on Library Manager in the browser.
 8. Click on the (+) menu in the Project Libraries plane (not the one in the Arduino plane).
 9. Search for NewPing and add that to the library.
-10-1. Confirm that both "Servo" and "NewPing" are present in the Project Libraries plane.
-10-2. If "Servo" is not present. You will have to add it manually. Go back to step 7 - 9. This time, search for Servo instead of NewPing. There are many Servo libraries, but find the one that contains only Servo.
-11. The simulation environment is all set up. Click on the (+) in the Arduino plane to start the simulation.
+10. Confirm that both "Servo" and "NewPing" are present in the Project Libraries plane.
+11. If "Servo" is not present, you will have to add it manually. Go back to step 7 - 9. This time, search for Servo instead of NewPing. There are many Servo libraries, but find the one that contains only Servo.
+12. The simulation environment is all set up. Click on the (+) in the Arduino plane to start the simulation.
