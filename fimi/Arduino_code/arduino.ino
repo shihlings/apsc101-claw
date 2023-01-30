@@ -46,5 +46,17 @@ void setup() {
 }
 
 void loop() {
-//insert your program here.
+  int val = 1;
+  while (val == 1) {
+    myservo.write(60);                          //The (60) here and the (150) below can be changed to the desired servo motor angles
+    int distance = sonar.ping_cm();
+    if (distance > 0 && distance < 7) {         //distance (7) can be changed to the desired sensor height
+      break;
+    }
+  }
+  
+  myservo.write(150);
+  delay(3000);                                  //Delay can be extended of shortened before opening again
+  
+  
 }
