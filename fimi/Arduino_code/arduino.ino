@@ -56,7 +56,7 @@ void loop() {
   }
   
   myservo.write(150);
-  delay(3000);                                  //Delay can be extended of shortened before opening again
+  delay(3000);                                  //Delay before opening again can be extended or shortened
   
   
 }
