@@ -26,6 +26,9 @@ NewPing sonar(ULTRASONIC_TRIGGER, ULTRASONIC_ECHO, MAX_DISTANCE); //initialize N
 //Switch Pin definitions
 #define SWITCH 8
 
+#define Close 150
+#define Open 60
+
 void setup() {
   //Serial Debug Setup
   Serial.begin(9600);
@@ -47,15 +50,18 @@ void setup() {
 
 void loop() {
   int val = 1;
-  while (val == 1) {
-    myservo.write(60);                          //The (60) here and the (150) below can be changed to the desired servo motor angles
+
+  myservo.write(Open);             //Opne and close values are defined above and can be changed to the desired servo motor angles
+  delay(2000);
+
+  while (val == 1) {         
     int distance = sonar.ping_cm();
-    if (distance > 0 && distance < 7) {         //distance (7) can be changed to the desired sensor height
-      break;
+    if (distance < 20) {         //distance (7) can be changed to the desired sensor height
+      val = 0;
     }
   }
   
-  myservo.write(150);
+  myservo.write(Close);
   delay(3000);                                  //Delay before opening again can be extended or shortened
   
   
