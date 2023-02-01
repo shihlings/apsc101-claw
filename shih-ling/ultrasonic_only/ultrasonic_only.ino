@@ -62,6 +62,8 @@ void setup() {
 
   //Servo Motor Setup
   myservo.attach(SERVO);
+
+  //Open Claw initially
   OpenClaw();
 }
 

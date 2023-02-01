@@ -73,6 +73,9 @@ void setup() {
 
   //Switch Setup
   pinMode(SWITCH, INPUT);
+
+  //Open Claw initially
+  OpenClaw();
 }
 
 void loop() {
