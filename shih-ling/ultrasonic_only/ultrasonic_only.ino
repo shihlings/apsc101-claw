@@ -12,9 +12,9 @@
   #include <Servo.h>        //servo library for servo motor
 
 //Program Parameters
-//  #define DEBUG                         //commenting this out will disable all debugging features, program efficiency will improve
   #define DEBUG                         //commenting this out will disable all debugging features, program efficiency will improve
   #define DISTANCE_THRESHOLD      30    //the distance detected to trigger a grab/release (in centimeters)
+  #define ERROR_PREVENTION        10    //the distance additional to the DISTANCE_THRESHOLD to recognize the claw is raised (to prevent signal fluctuation problems)
   #define INITIAL_ANGLE           0     //the initial angle the servo motor is at. The twist angle will be adjust accordingly to this number (in degrees)
   #define TWIST_ANGLE             180   //the amount to twist to grasp the object (in degrees)
   #define PERFORMANCE_DELAY       30    //the time delay to wait between each data check
@@ -102,7 +102,7 @@ void WaitUntilRise () {
   long last_check = 0;
 
   //waits until the distance detected is greater than the threshold
-  while (distance <= DISTANCE_THRESHOLD) {
+  while (distance <= DISTANCE_THRESHOLD + ERROR_PREVENTION) {
     //only check every PERFORMANCE_DELAY milliseconds to improve performance
     if (millis() >= last_check + PERFORMANCE_DELAY) {
       distance = GetUltrasonic();   //retrieve distance data
