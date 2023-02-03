@@ -1,7 +1,7 @@
 /*
-  Title:        APSC 101 U-1 Module 5 Arduino Program with Ultrasonic Sensor
+  Title:        APSC 101 U-1 Module 5 Arduino Program with Ultrasonic Sensor for Experiment 2
   Author:       Shih-Ling Shen
-  Date:         Jan 27th, 2023
+  Date:         Feb 3rd, 2023
   Description:  This program relies on the ultrasonic sensor to determine when to grab and release the object.
   Operation:    The claw closes if it reaches below the set distance threshold and the previous state of the claw was open
                 The claw opens if it reaches below the set distance threshold and the previous state of the claw was closed
