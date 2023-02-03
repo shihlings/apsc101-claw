@@ -12,7 +12,7 @@
   #include <Servo.h>        //servo library for servo motor
 
 //Program Parameters
-  #define DEBUG                         //commenting this out will disable all debugging features, program efficiency will improve
+//  #define DEBUG                         //commenting this out will disable all debugging features, program efficiency will improve
   #define DISTANCE_THRESHOLD      30    //the distance detected to trigger a grab/release (in centimeters)
   #define ERROR_PREVENTION        10    //the distance additional to the DISTANCE_THRESHOLD to recognize the claw is raised (to prevent signal fluctuation problems)
   #define INITIAL_ANGLE           0     //the initial angle the servo motor is at. The twist angle will be adjust accordingly to this number (in degrees)
