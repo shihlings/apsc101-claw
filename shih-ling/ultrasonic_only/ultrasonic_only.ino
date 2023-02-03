@@ -94,6 +94,10 @@ void ClawDelay () {
   while (millis() <= time + CLAW_DELAY) {
     delay(PERFORMANCE_DELAY);
   }
+
+  #ifdef DEBUG
+    Serial.println("Timeout");
+  #endif
 }
 
 //wait until the claw is risen (no function just delay)
@@ -109,6 +113,10 @@ void WaitUntilRise () {
       last_check = millis();        //stores the time of the last check
     }
   }
+  
+  #ifdef DEBUG
+    Serial.println("Rise Detected");
+  #endif
 }
 
 //wait until the claw is lowered (no function just delay)
@@ -124,6 +132,10 @@ void WaitUntilLower () {
       last_check = millis();        //stores the time of the last check
     }
   }
+  
+  #ifdef DEBUG
+    Serial.println("Lower Detected");
+  #endif
 }
 
 //retrieves the distance read in the ultrasonic sensor
@@ -132,9 +144,9 @@ int GetUltrasonic () {
   int distance = sonar.ping_cm();           //read the ultrasonic sensor, and store it in a variable
 
   #ifdef DEBUG
-    Serial.print("Ping: ");                 //print “Ping:" on the computer display
-    Serial.print(distance);                 //print the value of the variable next
-    Serial.println("cm");                   //print "cm" after that, then go to next lin
+//    Serial.print("Ping: ");                 //print “Ping:" on the computer display
+    Serial.println(distance);                 //print the value of the variable next
+//    Serial.println("cm");                   //print "cm" after that, then go to next lin
   #endif
 
   return distance;                          //returns the distance read to the main program
@@ -144,10 +156,17 @@ int GetUltrasonic () {
 void OpenClaw () {
   myservo.write(INITIAL_ANGLE);
   claw_state = OPEN;
+  #ifdef DEBUG
+    Serial.println("Open");
+  #endif
 }
 
 //Closes the claw
 void CloseClaw () {
   myservo.write(INITIAL_ANGLE + TWIST_ANGLE);
   claw_state = CLOSED;
+
+  #ifdef DEBUG
+    Serial.println("Close");
+  #endif
 }
