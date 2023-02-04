@@ -1,5 +1,5 @@
 /*
-  Title:        APSC 101 U-1 Module 5 Arduino Program with Ultrasonic Sensor and LED indicators (Test)
+  Title:        APSC 101 U-1 Module 5 Arduino Program with Ultrasonic Sensor and LED indicators (Production)
   Author:       Shih-Ling Shen
   Date:         Feb 3rd, 2023
   Description:  This program relies on the ultrasonic sensor to determine when to grab and release the object.
