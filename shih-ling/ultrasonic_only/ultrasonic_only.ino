@@ -125,6 +125,8 @@ void loop() {
   else {
     OpenClaw();
   }
+
+  //delay the program to prevent signal redundancy
   delay(BLACKOUT);
 }
 
@@ -193,12 +195,13 @@ void WaitUntilLower () {
 //retrieves the distance read in the ultrasonic sensor
 //prints the distance through serial port if DEBUG is on
 int GetUltrasonic () {
-  delay(100);
+  delay(SIGNAL_SAMPLE_RATE);                //delay to prevent inaccurate/redundant readings
+
   int distance = sonar.ping_cm();           //read the ultrasonic sensor, and store it in a variable
 
   #ifdef DEBUG
     Serial.print("Ping: ");                 //print “Ping:" on the computer display
-    Serial.println(distance);                 //print the value of the variable next
+    Serial.print(distance);                 //print the value of the variable next
     Serial.println("cm");                   //print "cm" after that, then go to next lin
   #endif
 
