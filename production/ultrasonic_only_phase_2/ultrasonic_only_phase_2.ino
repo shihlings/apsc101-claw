@@ -1,5 +1,5 @@
 /*
-  Title:        APSC 101 U-1 Module 5 Arduino Program with Ultrasonic Sensor and LED indicators for Phase 2 with relative height (Testing)
+  Title:        APSC 101 U-1 Module 5 Arduino Program with Ultrasonic Sensor and LED indicators for Phase 2 with relative height (Production)
   Date:         Feb 3rd, 2023
   Description:  This program relies on the ultrasonic sensor to determine when to grab and release the object.
   Operation:    The claw detects whether it is going up or down and determines the time to open/close.
