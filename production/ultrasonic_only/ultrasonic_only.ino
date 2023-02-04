@@ -73,6 +73,7 @@ void setup() {
 void loop() {
   //wait until the claw rises then lowers
   WaitUntilRise();
+  delay(PERFORMANCE_DELAY);
   WaitUntilLower();
 
   //delays the execution of open/close to give time for positioning
