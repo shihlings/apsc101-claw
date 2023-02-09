@@ -144,9 +144,9 @@ int GetUltrasonic () {
   int distance = sonar.ping_cm();           //read the ultrasonic sensor, and store it in a variable
 
   #ifdef DEBUG
-    Serial.print("Ping: ");                 //print “Ping:" on the computer display
+    //Serial.print("Ping: ");                 //print “Ping:" on the computer display
     Serial.println(distance);                 //print the value of the variable next
-    Serial.println("cm");                   //print "cm" after that, then go to next lin
+    //Serial.println("cm");                   //print "cm" after that, then go to next lin
   #endif
 
   return distance;                          //returns the distance read to the main program
